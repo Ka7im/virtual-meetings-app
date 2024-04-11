@@ -2,8 +2,6 @@ import { getFirstCommunity } from "@/features/community";
 import { initialProfile } from "@/features/profile";
 import { redirect } from "next/navigation";
 
-
-
 const SetupPage = async () => {
   const profile = await initialProfile();
 
