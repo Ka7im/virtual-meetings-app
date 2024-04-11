@@ -5,10 +5,12 @@ import { redirect } from "next/navigation";
 const SetupPage = async () => {
   const profile = await initialProfile();
 
-  const community = await getFirstCommunity({ profileId: profile.id })
+  if (profile) {
+    const community = await getFirstCommunity({ profileId: profile.id })
 
-  if (community) {
-    redirect(`/communities/${community.id}`)
+    if (community) {
+      redirect(`/communities/${community.id}`)
+    }
   }
 
   return <div>Create a Server</div>
