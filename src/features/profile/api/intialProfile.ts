@@ -1,11 +1,12 @@
 import { db } from "@/shared/api/db";
 import { currentUser, redirectToSignIn } from "@clerk/nextjs";
 
-export const initialProfile = async (): Promise<typeof newProfile> => {
+export const initialProfile = async () => {
   const user = await currentUser();
 
   if (!user) {
-    return redirectToSignIn()
+    redirectToSignIn()
+    return
   }
 
   const profile = await db.profile.findUnique({
