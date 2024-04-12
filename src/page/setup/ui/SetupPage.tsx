@@ -1,7 +1,7 @@
+import { CreateCommunityModal } from '@/features/community'
 import { getFirstCommunity } from '@/features/community/api/getFirstCommunity'
 import { initialProfile } from '@/features/profile/api/intialProfile'
 import { redirect } from 'next/navigation'
-import InitialModal from './InitialModal'
 
 export async function SetupPage() {
   const profile = await initialProfile()
@@ -14,5 +14,5 @@ export async function SetupPage() {
     }
   }
 
-  return <InitialModal />
+  return <CreateCommunityModal />
 }

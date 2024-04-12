@@ -21,13 +21,14 @@ import {
 import { Input } from '@/shared/ui/input'
 import { Button } from '@/shared/ui/button'
 import { useEffect, useState } from 'react'
+import FileUpload from '@/shared/ui/FileUpload'
 
 const formSchema = z.object({
   name: z.string().min(1, { message: 'Community name is required.' }),
   imageUrl: z.string().min(1, { message: 'Community image is required.' }),
 })
 
-const InitialModal = () => {
+export const CreateCommunityModal = () => {
   const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
@@ -66,7 +67,21 @@ const InitialModal = () => {
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             <div className="space-y-8 px-6">
               <div className="flex items-center justify-center text-center">
-                TODO: Image Upload
+                <FormField
+                  control={form.control}
+                  name="imageUrl"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <FileUpload
+                          endpoint="communityImage"
+                          value={field.value}
+                          onChange={field.onChange}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
               </div>
               <FormField
                 control={form.control}
@@ -100,5 +115,3 @@ const InitialModal = () => {
     </Dialog>
   )
 }
-
-export default InitialModal
