@@ -1,4 +1,4 @@
-import { currentProfile } from '@/shared/api/currentProfile'
+import { currentProfile } from '@/entities/profile'
 import { db } from '@/shared/api/db'
 import { MemberRole } from '@prisma/client'
 import { NextResponse } from 'next/server'

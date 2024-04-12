@@ -1,13 +1,14 @@
 import { CreateCommunityButton } from '@/features/community'
-import { currentProfile } from '@/shared/api/currentProfile'
+
 import { db } from '@/shared/api/db'
 import { ModeToggle } from '@/shared/ui/ModeToggle'
 import { ScrollArea } from '@/shared/ui/scroll-area'
 import { Separator } from '@/shared/ui/separator'
 import { redirect } from 'next/navigation'
-import React, { FC } from 'react'
+import React from 'react'
 import { SidebarItem } from './SidebarItem'
 import { UserButton } from '@clerk/nextjs'
+import { currentProfile } from '@/entities/profile'
 
 export const Sidebar = async () => {
   const profile = await currentProfile()

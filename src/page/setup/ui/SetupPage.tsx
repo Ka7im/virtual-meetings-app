@@ -1,5 +1,6 @@
+import { getFirstCommunity } from '@/entities/community'
 import { CreateCommunityModal } from '@/features/community'
-import { getFirstCommunity } from '@/features/community/api/getFirstCommunity'
+
 import { initialProfile } from '@/features/profile/api/intialProfile'
 import { redirect } from 'next/navigation'
 

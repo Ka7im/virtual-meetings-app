@@ -1,7 +1,7 @@
 import { auth } from '@clerk/nextjs'
-import { db } from './db'
+import { db } from '../../../shared/api/db'
 
-export const currentProfile = async () => {
+export const getUnique = async (): Promise<typeof profile | null> => {
   const { userId } = auth()
 
   if (!userId) {
