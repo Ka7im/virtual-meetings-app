@@ -1,7 +1,7 @@
 import { CreateCommunityButton } from '@/features/community'
 import { currentProfile } from '@/shared/api/currentProfile'
 import { db } from '@/shared/api/db'
-import { ModeToggle } from '@/shared/ui/mode-toggle'
+import { ModeToggle } from '@/shared/ui/ModeToggle'
 import { ScrollArea } from '@/shared/ui/scroll-area'
 import { Separator } from '@/shared/ui/separator'
 import { redirect } from 'next/navigation'

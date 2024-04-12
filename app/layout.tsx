@@ -4,6 +4,7 @@ import './globals.css'
 import { ClerkProvider } from '@clerk/nextjs'
 import { ThemeProvider } from '@/app/providers/ThemeProvider'
 import { cn } from '@/shared/lib/utils'
+import { ModalProvider } from '@/app/providers/ModalProvider'
 
 const font = Open_Sans({ subsets: ['latin'] })
 
@@ -27,6 +28,7 @@ export default function RootLayout({
             enableSystem
             storageKey="virtual-meetings-theme"
           >
+            <ModalProvider />
             {children}
           </ThemeProvider>
         </body>

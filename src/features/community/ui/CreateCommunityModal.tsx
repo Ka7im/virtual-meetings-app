@@ -20,24 +20,29 @@ import {
 } from '@/shared/ui/form'
 import { Input } from '@/shared/ui/input'
 import { Button } from '@/shared/ui/button'
-import { useEffect, useState } from 'react'
+
 import { FileUpload } from '@/shared/ui/FileUpload'
 import { useRouter } from 'next/navigation'
 import { createCommunity } from '../api/createComminity'
+import { useModal } from '@/shared/model/modalStore'
+import { useEffect, useState } from 'react'
 
 const formSchema = z.object({
   name: z.string().min(1, { message: 'Community name is required.' }),
   imageUrl: z.string().min(1, { message: 'Community image is required.' }),
 })
 
-export const CreateCommunityModal = () => {
+interface CreateCommunityModalProps {
+  isClosable: boolean
+}
+
+export const CreateCommunityModal = ({
+  isClosable,
+}: CreateCommunityModalProps) => {
   const router = useRouter()
+  const { isOpen, onClose, type } = useModal()
 
-  const [isMounted, setIsMounted] = useState(false)
-
-  useEffect(() => {
-    setIsMounted(true)
-  }, [])
+  const isModalOpen = isOpen && type === 'createCommunity'
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -51,20 +56,35 @@ export const CreateCommunityModal = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      createCommunity(values)
+      await createCommunity(values)
 
       form.reset()
       router.refresh()
-      window.location.reload()
+      onClose()
     } catch (error) {
       console.log(error)
     }
   }
 
-  if (!isMounted) return null
+  const handleClose = () => {
+    form.reset()
+    onClose()
+  }
+
+  const [isMounted, setIsMounted] = useState(false)
+
+  useEffect(() => {
+    if (!isClosable) {
+      setIsMounted(true)
+    }
+  }, [])
+
+  if (!isMounted && !isClosable) {
+    return null
+  }
 
   return (
-    <Dialog open>
+    <Dialog open={isClosable ? isModalOpen : true} onOpenChange={handleClose}>
       <DialogContent className="bg-white text-black p-0 overflow-hidden">
         <DialogHeader className="pt-8 px-6">
           <DialogTitle className="text-2xl text-center font-bold">

@@ -14,5 +14,5 @@ export async function SetupPage() {
     }
   }
 
-  return <CreateCommunityModal />
+  return <CreateCommunityModal isClosable={false} />
 }
