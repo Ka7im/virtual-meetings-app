@@ -22,6 +22,8 @@ import { Input } from '@/shared/ui/input'
 import { Button } from '@/shared/ui/button'
 import { useEffect, useState } from 'react'
 import FileUpload from '@/shared/ui/FileUpload'
+import { useRouter } from 'next/navigation'
+import { createCommunity } from '../api/createComminity'
 
 const formSchema = z.object({
   name: z.string().min(1, { message: 'Community name is required.' }),
@@ -29,6 +31,8 @@ const formSchema = z.object({
 })
 
 export const CreateCommunityModal = () => {
+  const router = useRouter()
+
   const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
@@ -46,7 +50,15 @@ export const CreateCommunityModal = () => {
   const isLoading = form.formState.isSubmitting
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log(values)
+    try {
+      createCommunity(values)
+
+      form.reset()
+      router.refresh()
+      window.location.reload()
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   if (!isMounted) return null
