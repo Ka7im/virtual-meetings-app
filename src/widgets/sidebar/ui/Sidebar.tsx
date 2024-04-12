@@ -1,4 +1,4 @@
-import { CreateCommunityButton } from '@/features/community'
+import { CreateCommunityButton } from '@/features/community/create'
 
 import { db } from '@/shared/api/db'
 import { ModeToggle } from '@/shared/ui/ModeToggle'

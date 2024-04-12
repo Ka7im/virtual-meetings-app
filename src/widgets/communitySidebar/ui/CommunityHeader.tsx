@@ -44,7 +44,7 @@ export const CommunityHeader = ({ community, role }: CommunityHeaderProps) => {
         <DropdownMenuContent className="font-md w-56 space-y-[2px] text-xs text-black dark:text-neutral-400">
           {isModerator && (
             <DropdownMenuItem
-              // onClick={() => onOpen('invite', { community })}
+              onClick={() => onOpen('invite', { community })}
               className="flex cursor-pointer justify-between px-3  py-2 text-indigo-600 dark:text-indigo-400"
             >
               Invite People
@@ -55,7 +55,7 @@ export const CommunityHeader = ({ community, role }: CommunityHeaderProps) => {
           {isAdmin && (
             <DropdownMenuItem
               className="flex cursor-pointer justify-between px-3 py-2 dark:text-white"
-              // onClick={() => onOpen('editCommunity', { community })}
+              onClick={() => onOpen('editCommunity', { community })}
             >
               Community Settings
               <Settings className="h-6 w-6" />
@@ -64,7 +64,7 @@ export const CommunityHeader = ({ community, role }: CommunityHeaderProps) => {
           {isModerator && (
             <DropdownMenuItem
               className="flex cursor-pointer justify-between px-3 py-2 dark:text-white"
-              // onClick={() => onOpen('users', { community })}
+              onClick={() => onOpen('users', { community })}
             >
               Manage Users
               <Users className="h-6 w-6" />
@@ -73,7 +73,7 @@ export const CommunityHeader = ({ community, role }: CommunityHeaderProps) => {
           {isModerator && (
             <DropdownMenuItem
               className="flex cursor-pointer justify-between px-3 py-2 dark:text-white"
-              // onClick={() => onOpen('createRoom')}
+              onClick={() => onOpen('createRoom')}
             >
               Create Room
               <PlusCircle className="h-6 w-6" />
@@ -83,7 +83,7 @@ export const CommunityHeader = ({ community, role }: CommunityHeaderProps) => {
           {isAdmin && (
             <DropdownMenuItem
               className="flex cursor-pointer justify-between px-3 py-2 text-rose-500"
-              // onClick={() => onOpen('deleteCommunity', { community })}
+              onClick={() => onOpen('deleteCommunity', { community })}
             >
               Delete Community
               <Trash className="h-6 w-6" />
@@ -92,7 +92,7 @@ export const CommunityHeader = ({ community, role }: CommunityHeaderProps) => {
           {!isAdmin && (
             <DropdownMenuItem
               className="flex cursor-pointer justify-between  px-3 py-2 text-rose-500"
-              // onClick={() => onOpen('leaveCommunity', { community })}
+              onClick={() => onOpen('leaveCommunity', { community })}
             >
               Leave Community
               <LogOut className="h-6 w-6" />

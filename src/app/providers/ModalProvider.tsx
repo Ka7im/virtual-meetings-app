@@ -1,18 +1,16 @@
 'use client'
 
-import { CreateCommunityModal } from '@/features/community'
-import { useEffect, useState } from 'react'
+import { CreateCommunityModal } from '@/features/community/create'
+import { InviteMemberModal } from '@/features/member/invite'
+import { useMounting } from '@/shared/lib/hooks/useMounting'
 
 export const ModalProvider = () => {
-  const [isMounted, setIsMounted] = useState(false)
+  useMounting()
 
-  useEffect(() => {
-    setIsMounted(true)
-  }, [])
-
-  if (!isMounted) {
-    return null
-  }
-
-  return <CreateCommunityModal isClosable />
+  return (
+    <>
+      <CreateCommunityModal isClosable />
+      <InviteMemberModal />
+    </>
+  )
 }

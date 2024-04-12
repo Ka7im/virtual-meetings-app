@@ -35,7 +35,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json(community)
   } catch (error) {
-    console.error('[SERVERS_POST]', error)
+    console.error('[COMMUNITIES_POST]', error)
     return new NextResponse('Internal Error', { status: 500 })
   }
 }
