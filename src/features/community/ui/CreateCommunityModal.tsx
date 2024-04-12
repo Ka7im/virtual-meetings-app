@@ -21,7 +21,7 @@ import {
 import { Input } from '@/shared/ui/input'
 import { Button } from '@/shared/ui/button'
 import { useEffect, useState } from 'react'
-import FileUpload from '@/shared/ui/FileUpload'
+import { FileUpload } from '@/shared/ui/FileUpload'
 import { useRouter } from 'next/navigation'
 import { createCommunity } from '../api/createComminity'
 

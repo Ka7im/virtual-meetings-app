@@ -15,10 +15,10 @@ const handleAuth = () => {
 export const ourFileRouter = {
   communityImage: f({ image: { maxFileSize: '4MB', maxFileCount: 1 } })
     .middleware(() => handleAuth())
-    .onUploadComplete(() => { }),
+    .onUploadComplete(() => {}),
   messageFile: f(['image', 'pdf'])
     .middleware(() => handleAuth())
-    .onUploadComplete(() => { }),
+    .onUploadComplete(() => {}),
 } satisfies FileRouter
 
 export type OurFileRouter = typeof ourFileRouter

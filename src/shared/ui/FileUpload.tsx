@@ -15,7 +15,7 @@ interface FileUploadProps {
   onChange: (url?: string) => void
 }
 
-const FileUpload = ({ endpoint, onChange, value }: FileUploadProps) => {
+export const FileUpload = ({ endpoint, onChange, value }: FileUploadProps) => {
   const [isLoaded, setIsLoaded] = useState(false)
   const fileType = value.split('.').pop()
 
@@ -79,5 +79,3 @@ const FileUpload = ({ endpoint, onChange, value }: FileUploadProps) => {
     />
   )
 }
-
-export default FileUpload
