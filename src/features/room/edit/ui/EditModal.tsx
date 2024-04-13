@@ -28,10 +28,11 @@ import {
 } from '@/shared/ui/select'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { RoomType } from '@prisma/client'
-import { useParams, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
+import { useLayoutEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
-import { createRoom } from '../api/createRoom'
+import { edit } from '../api/edit'
 
 const formSchema = z.object({
   name: z
@@ -46,36 +47,45 @@ const formSchema = z.object({
   type: z.nativeEnum(RoomType),
 })
 
-export const CreateModal = ({}) => {
-  const { isOpen, type, onClose } = useModal()
-  const router = useRouter()
-  const params = useParams()
+export const EditModal = () => {
+  const { isOpen, type, onClose, data } = useModal()
+  const { community, room } = data
 
-  const isModalOpen = isOpen && type == 'createRoom'
+  const router = useRouter()
+
+  const isModalOpen = isOpen && type == 'editRoom'
 
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: '',
-      type: RoomType.TEXT,
+      name: room?.name || '',
+      type: room?.type || RoomType.TEXT,
     },
   })
+
+  useLayoutEffect(() => {
+    if (room) {
+      form.setValue('name', room.name)
+      form.setValue('type', room.type)
+    }
+  }, [form, room])
 
   const isLoading = form.formState.isSubmitting
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
-      await createRoom({ data, communityId: params.communityId as string })
-      form.reset()
-      router.refresh()
-      onClose()
+      if (room && community) {
+        await edit({ roomId: room.id, communityId: community.id, data })
+        form.reset()
+        router.refresh()
+        onClose()
+      }
     } catch (error) {
       console.error(error)
     }
   }
 
   const handleClose = async () => {
-    form.reset()
     onClose()
   }
 
@@ -84,10 +94,10 @@ export const CreateModal = ({}) => {
       <DialogContent className="overflow-hidden bg-white p-0 text-black">
         <DialogHeader className="px-6 pt-8">
           <DialogTitle className="text-center text-2xl font-bold">
-            Customize your community
+            Edit a room
           </DialogTitle>
           <DialogDescription className="text-center text-zinc-500">
-            Create a room. Room can be text, audio and video.
+            Change room name or room type
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
@@ -105,7 +115,7 @@ export const CreateModal = ({}) => {
                       <Input
                         disabled={isLoading}
                         className="border-0 bg-zinc-300/50 text-black focus-visible:ring-0 focus-visible:ring-offset-0"
-                        placeholder="Enter room name"
+                        placeholder="Enter community name"
                         {...field}
                       />
                     </FormControl>

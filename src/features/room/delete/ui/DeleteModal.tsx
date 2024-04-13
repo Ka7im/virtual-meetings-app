@@ -12,16 +12,18 @@ import {
 } from '@/shared/ui/dialog'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
-import { deleteCommunity } from '../api/deleteCommunity'
+import { deleteRoom } from '../api/deleteRoom'
 
-export const DeleteModal = () => {
+export const DeleteModal = ({}) => {
   const { isOpen, type, onClose, data } = useModal()
+
   const router = useRouter()
-  const { community } = data
+
+  const { community, room } = data
 
   const [loading, setLoading] = useState<boolean>(false)
 
-  const isModalOpen = isOpen && type == 'deleteCommunity'
+  const isModalOpen = isOpen && type == 'deleteRoom'
 
   const onCancel = () => {
     onClose()
@@ -29,11 +31,11 @@ export const DeleteModal = () => {
 
   const onConfirm = async () => {
     try {
-      if (community) {
+      if (room && community) {
         setLoading(true)
 
-        const response = await deleteCommunity({ communityId: community.id })
-        router.push(response.data)
+        await deleteRoom({ roomId: room.id, communityId: community.id })
+        router.push(`/communities/${community?.id}`)
         router.refresh()
       }
       onClose()
@@ -49,12 +51,13 @@ export const DeleteModal = () => {
       <DialogContent className="overflow-hidden bg-white p-0 text-black">
         <DialogHeader className="px-6 pt-8">
           <DialogTitle className="text-center text-2xl font-bold">
-            Delete Community
+            Delete Room
           </DialogTitle>
-          <DialogDescription className="text-center text-zinc-500">
-            Do you really want to do this? The{' '}
-            <span className="font-semibold text-indigo-500">
-              {community?.name}
+          <DialogDescription className="text-center text-zinc-500 ">
+            Do you really want to do this? The {room?.type.toLowerCase()}
+            -room{' '}
+            <span className="font-semibold text-indigo-500  ">
+              #{room?.name}
             </span>{' '}
             will be permamently deleted.
           </DialogDescription>

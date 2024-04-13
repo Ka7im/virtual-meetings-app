@@ -33,8 +33,10 @@ export const LeaveModal = () => {
         setLoading(true)
 
         const response = await leave({ communityId: community.id })
-        router.refresh()
+        console.log('leave', response.data)
+
         router.push(response.data)
+        router.refresh()
       }
     } catch (error) {
       console.error(error)

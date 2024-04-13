@@ -6,7 +6,9 @@ import { EditCommunityModal } from '@/features/community/edit'
 import { LeaveFromCommunityModal } from '@/features/community/leave'
 import { InviteMemberModal } from '@/features/member/invite'
 import { ManageMembersModal } from '@/features/member/manage'
-import { CreateRoomModal } from '@/features/room'
+import { CreateRoomModal } from '@/features/room/create'
+import { DeleteRoomModal } from '@/features/room/delete'
+import { EditRoomModal } from '@/features/room/edit'
 import { useMounting } from '@/shared/lib/hooks/useMounting'
 
 export const ModalProvider = () => {
@@ -15,12 +17,16 @@ export const ModalProvider = () => {
   return (
     <>
       <CreateCommunityModal isClosable />
-      <InviteMemberModal />
-      <EditCommunityModal />
-      <ManageMembersModal />
-      <CreateRoomModal />
       <DeleteCommunityModal />
+      <EditCommunityModal />
       <LeaveFromCommunityModal />
+
+      <InviteMemberModal />
+      <ManageMembersModal />
+
+      <CreateRoomModal />
+      <DeleteRoomModal />
+      <EditRoomModal />
     </>
   )
 }
