@@ -46,7 +46,7 @@ export async function DELETE(
     }
 
     if (!params.communityId) {
-      return new NextResponse('Server ID Missing', { status: 400 })
+      return new NextResponse('Community ID Missing', { status: 400 })
     }
 
     const community = await db.community.findFirst({
