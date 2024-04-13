@@ -64,7 +64,7 @@ export const CommunityHeader = ({ community, role }: CommunityHeaderProps) => {
           {isModerator && (
             <DropdownMenuItem
               className="flex cursor-pointer justify-between px-3 py-2 dark:text-white"
-              onClick={() => onOpen('users', { community })}
+              onClick={() => onOpen('members', { community })}
             >
               Manage Users
               <Users className="h-6 w-6" />

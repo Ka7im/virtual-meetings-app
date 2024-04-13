@@ -13,8 +13,8 @@ import { Input } from '@/shared/ui/input'
 import { Label } from '@/shared/ui/label'
 import { Check, Copy, RefreshCw } from 'lucide-react'
 import { useState } from 'react'
-import { useOrigin } from '../lib/hooks/useOrigin'
-import { getNewInviteCode } from '../api/getNewInviteCode'
+import { useOrigin } from '@/shared/lib/hooks/useOrigin'
+import { getNewInviteCode } from '@/entities/community/api/getNewInviteCode'
 import { useMounting } from '@/shared/lib/hooks/useMounting'
 
 export const InviteModal = () => {

@@ -1,7 +1,9 @@
 'use client'
 
 import { CreateCommunityModal } from '@/features/community/create'
+import { EditCommunityModal } from '@/features/community/edit'
 import { InviteMemberModal } from '@/features/member/invite'
+import { ManageMembersModal } from '@/features/member/manage'
 import { useMounting } from '@/shared/lib/hooks/useMounting'
 
 export const ModalProvider = () => {
@@ -11,6 +13,8 @@ export const ModalProvider = () => {
     <>
       <CreateCommunityModal isClosable />
       <InviteMemberModal />
+      <EditCommunityModal />
+      <ManageMembersModal />
     </>
   )
 }
