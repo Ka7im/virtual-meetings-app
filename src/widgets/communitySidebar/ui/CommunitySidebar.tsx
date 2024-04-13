@@ -7,6 +7,7 @@ import { RoomType, MemberRole } from '@prisma/client'
 import { Hash, Mic, ShieldAlert, ShieldCheck, Video } from 'lucide-react'
 import { redirect } from 'next/navigation'
 import { CommunityHeader } from './CommunityHeader'
+import { SearchCommunity } from '@/features/community/search'
 
 interface CommunitySidebarProps {
   communityId: string
@@ -47,9 +48,9 @@ export const CommunitySidebar = async ({
   return (
     <div className="flex h-full w-full flex-col bg-[#F2F3F5] text-primary dark:bg-[#2B2D31]">
       <CommunityHeader community={community} role={role} />
-      {/* <ScrollArea className="flex-1 px-3">
+      <ScrollArea className="flex-1 px-3">
         <div className="mt-2">
-          <CommunitySearch
+          <SearchCommunity
             data={[
               {
                 label: 'Text Rooms',
@@ -91,7 +92,7 @@ export const CommunitySidebar = async ({
           />
         </div>
         <Separator className="my-2 rounded-md bg-zinc-200 dark:bg-zinc-700" />
-        {!!textRooms?.length && (
+        {/* {!!textRooms?.length && (
           <div className="mb-2">
             <CommunitySection
               sectionType="channels"
@@ -169,8 +170,8 @@ export const CommunitySidebar = async ({
               ))}
             </div>
           </div>
-        )}
-      </ScrollArea> */}
+        )} */}
+      </ScrollArea>
     </div>
   )
 }

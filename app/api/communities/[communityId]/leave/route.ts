@@ -1,21 +1,21 @@
-import { currentProfile } from '@/entities/profile';
+import { currentProfile } from '@/entities/profile'
 
-import { db } from '@/shared/api/db';
-import { NextResponse } from 'next/server';
+import { db } from '@/shared/api/db'
+import { NextResponse } from 'next/server'
 
 export async function PATCH(
   req: Request,
   { params }: { params: { communityId: string } },
 ) {
   try {
-    const profile = await currentProfile();
+    const profile = await currentProfile()
 
     if (!profile) {
-      return new NextResponse('Unauthorized', { status: 401 });
+      return new NextResponse('Unauthorized', { status: 401 })
     }
 
     if (!params.communityId) {
-      return new NextResponse('Community ID Missing', { status: 400 });
+      return new NextResponse('Community ID Missing', { status: 400 })
     }
 
     const community = await db.community.update({
@@ -37,7 +37,7 @@ export async function PATCH(
           },
         },
       },
-    });
+    })
 
     const firstCommunity = await db.community.findFirst({
       where: {
@@ -50,15 +50,15 @@ export async function PATCH(
           },
         },
       },
-    });
+    })
 
     if (firstCommunity) {
-      return NextResponse.json(`/communities/${firstCommunity.id}`);
+      return NextResponse.json(`/communities/${firstCommunity.id}`)
     }
 
-    return NextResponse.json(`/`);
+    return NextResponse.json(`/`)
   } catch (error) {
-    console.error('[COMMUNITY_LEAVE_ERROR]', error);
-    return new NextResponse('Internal Error', { status: 500 });
+    console.error('[COMMUNITY_LEAVE_ERROR]', error)
+    return new NextResponse('Internal Error', { status: 500 })
   }
 }
