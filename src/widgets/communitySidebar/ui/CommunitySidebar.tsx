@@ -7,7 +7,7 @@ import { RoomType, MemberRole } from '@prisma/client'
 import { Hash, Mic, ShieldAlert, ShieldCheck, Video } from 'lucide-react'
 import { redirect } from 'next/navigation'
 import { CommunityHeader } from './CommunityHeader'
-import { SearchCommunity } from '@/features/community/search'
+import { SearchCommunity } from './CommunitySearch'
 
 interface CommunitySidebarProps {
   communityId: string
