@@ -12,5 +12,8 @@ export const getCurrentMember = async ({
       communityId,
       profileId,
     },
+    include: {
+      profile: true
+    }
   })
 }
