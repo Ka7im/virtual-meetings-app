@@ -1,4 +1,4 @@
-import { db } from "@/shared/api/db";
+import { db } from '@/shared/api/db'
 
 export const createNewConversation = async (
   firstMemberId: string,
@@ -22,8 +22,8 @@ export const createNewConversation = async (
           },
         },
       },
-    });
+    })
   } catch {
-    return null;
+    return null
   }
-};
+}

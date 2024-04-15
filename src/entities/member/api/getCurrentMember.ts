@@ -13,7 +13,7 @@ export const getCurrentMember = async ({
       profileId,
     },
     include: {
-      profile: true
-    }
+      profile: true,
+    },
   })
 }

@@ -1,5 +1,5 @@
-import { createNewConversation } from "../../api/createNewConversation";
-import { findConversation } from "../../api/findConversation";
+import { createNewConversation } from '../../api/createNewConversation'
+import { findConversation } from '../../api/findConversation'
 
 export const createOrFindConversation = async (
   firstMemberId: string,
@@ -7,11 +7,11 @@ export const createOrFindConversation = async (
 ) => {
   let conversation =
     (await findConversation(firstMemberId, secondMemberId)) ||
-    (await findConversation(secondMemberId, firstMemberId));
+    (await findConversation(secondMemberId, firstMemberId))
 
   if (!conversation) {
-    conversation = await createNewConversation(firstMemberId, secondMemberId);
+    conversation = await createNewConversation(firstMemberId, secondMemberId)
   }
 
-  return conversation;
-};
+  return conversation
+}

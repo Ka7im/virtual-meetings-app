@@ -1,4 +1,4 @@
-import { db } from "@/shared/api/db";
+import { db } from '@/shared/api/db'
 
 export const findConversation = async (
   firstMemberId: string,
@@ -7,10 +7,7 @@ export const findConversation = async (
   try {
     return await db.conversation.findFirst({
       where: {
-        AND: [
-          { memberOneId: firstMemberId },
-          { memberTwoId: secondMemberId },
-        ],
+        AND: [{ memberOneId: firstMemberId }, { memberTwoId: secondMemberId }],
       },
       include: {
         memberOne: {
@@ -24,8 +21,8 @@ export const findConversation = async (
           },
         },
       },
-    });
+    })
   } catch {
-    return null;
+    return null
   }
-};
+}

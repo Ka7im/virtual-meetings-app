@@ -3,6 +3,7 @@ import { Avatar, AvatarImage } from '@/shared/ui/avatar'
 import { UserButton } from '@clerk/nextjs'
 import { Hash, Loader2 } from 'lucide-react'
 import { BurgerMenu } from './BurgerMenu'
+import { SocketIndicator } from '@/shared/ui/SocketIndicator'
 
 interface ChatHeaderProps {
   communityId: string
@@ -61,14 +62,18 @@ export const ChatHeader = ({
           </>
         )}
       </div>
-      <UserButton
+      {/* <UserButton
         afterSignOutUrl="/"
         appearance={{
           elements: {
             avatarBox: 'h-[36px] w-[36px]',
           },
         }}
-      />
+      /> */}
+
+      <div className="ml-auto flex items-center">
+        <SocketIndicator />
+      </div>
     </div>
   )
 }
