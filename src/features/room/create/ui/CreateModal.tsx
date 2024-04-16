@@ -75,7 +75,9 @@ export const CreateModal = ({}) => {
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
-      await createRoom({ data, communityId: params.communityId as string })
+      if (params && params.communityId) {
+        await createRoom({ data, communityId: params.communityId as string })
+      }
       form.reset()
       router.refresh()
       onClose()

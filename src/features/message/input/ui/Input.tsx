@@ -1,12 +1,13 @@
 'use client'
 
 import { useModal } from '@/shared/model/modalStore'
+import { EmojiPicker } from '@/shared/ui/EmojiPicker'
 import { Form, FormControl, FormField, FormItem } from '@/shared/ui/form'
 import { Input } from '@/shared/ui/input'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import axios from 'axios'
-import { Plus, Smile } from 'lucide-react'
+import { Plus } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { useRouter } from 'next/navigation'
 import qs from 'query-string'
@@ -94,24 +95,11 @@ export const MessageInput = ({ apiUrl, query, name, type }: props) => {
                     }`}
                   />
                   <div className="absolute right-7 top-7">
-                    {/* <Popover>
-                      <PopoverTrigger>
-                        <Smile className="text-zinc-500 transition hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-300" />
-                      </PopoverTrigger>
-                      <PopoverContent
-                        side="right"
-                        sideOffset={40}
-                        className="mb-16 border-none bg-transparent shadow-none drop-shadow-none"
-                      >
-                        <Picker
-                          data={data}
-                          theme={resolvedTheme}
-                          onEmojiSelect={(emoji: string) =>
-                            field.onChange(`${field.value}${emoji}`)
-                          }
-                        />
-                      </PopoverContent>
-                    </Popover> */}
+                    <EmojiPicker
+                      onChange={(emoji: string) =>
+                        field.onChange(`${field.value} ${emoji}`)
+                      }
+                    />
                   </div>
                 </div>
               </FormControl>

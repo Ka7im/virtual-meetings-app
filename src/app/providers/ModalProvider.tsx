@@ -6,6 +6,7 @@ import { EditCommunityModal } from '@/features/community/edit'
 import { LeaveFromCommunityModal } from '@/features/community/leave'
 import { InviteMemberModal } from '@/features/member/invite'
 import { ManageMembersModal } from '@/features/member/manage'
+import { AttachmentMessageModal } from '@/features/message/attachment'
 import { CreateRoomModal } from '@/features/room/create'
 import { DeleteRoomModal } from '@/features/room/delete'
 import { EditRoomModal } from '@/features/room/edit'
@@ -27,6 +28,8 @@ export const ModalProvider = () => {
       <CreateRoomModal />
       <DeleteRoomModal />
       <EditRoomModal />
+
+      <AttachmentMessageModal />
     </>
   )
 }
