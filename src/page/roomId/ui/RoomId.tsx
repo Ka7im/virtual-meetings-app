@@ -1,6 +1,7 @@
 import { getCurrentMember } from '@/entities/member'
 import { currentProfile } from '@/entities/profile'
 import { getRoom } from '@/entities/room'
+import { MessageInput } from '@/features/message/input'
 import { ChatHeader } from '@/widgets/chat'
 import { redirectToSignIn } from '@clerk/nextjs'
 import { RoomType } from '@prisma/client'
@@ -49,19 +50,19 @@ export const RoomId = async ({ params }: RoomIdProps) => {
             }}
             paramKey="roomId"
             paramValue={room.id}
-          />
-          <MessageInput
-            name={room.name}
-            type="room"
-            apiUrl="/api/socket/messages"
-            query={{
-              roomId: room.id,
-              communityId: room.communityId,
-            }}
-          />
-        </>
-      )}
-      {room.type === RoomType.AUDIO && (
+          /> */}
+      <MessageInput
+        name={room.name}
+        type="room"
+        apiUrl="/api/socket/messages"
+        query={{
+          roomId: room.id,
+          communityId: room.communityId,
+        }}
+      />
+      {/* </>
+      )} */}
+      {/* {room.type === RoomType.AUDIO && (
         <MediaRoom chatId={room.id} video={false} audio={true} />
       )}
       {room.type === RoomType.VIDEO && (
