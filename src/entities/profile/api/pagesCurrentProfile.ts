@@ -1,6 +1,6 @@
-import { db } from "@/shared/api/db"
-import { getAuth } from "@clerk/nextjs/server"
-import { NextApiRequest } from "next"
+import { db } from '@/shared/api/db'
+import { getAuth } from '@clerk/nextjs/server'
+import { NextApiRequest } from 'next'
 
 export const pagesCurrentProfile = async (req: NextApiRequest) => {
   const { userId } = getAuth(req)

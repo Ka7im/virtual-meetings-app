@@ -3,6 +3,7 @@ import { currentProfile } from '@/entities/profile'
 import { getRoom } from '@/entities/room'
 import { MessageInput } from '@/features/message/input'
 import { ChatHeader } from '@/widgets/chat'
+import { ChatMessages } from '@/widgets/chat/ui/ChatMessages'
 import { redirectToSignIn } from '@clerk/nextjs'
 import { RoomType } from '@prisma/client'
 import { redirect } from 'next/navigation'
@@ -33,9 +34,9 @@ export const RoomId = async ({ params }: RoomIdProps) => {
   }
 
   return (
-    <div className="flex h-full flex-col bg-white dark:bg-[#313338]">
+    <div className="flex h-full flex-col bg-white dark:bg-[#313338] justify-between">
       <ChatHeader name={room.name} communityId={room.communityId} type="room" />
-      {/* {room.type === RoomType.TEXT && (
+      {room.type === RoomType.TEXT && (
         <>
           <ChatMessages
             member={currentMember}
@@ -50,18 +51,18 @@ export const RoomId = async ({ params }: RoomIdProps) => {
             }}
             paramKey="roomId"
             paramValue={room.id}
-          /> */}
-      <MessageInput
-        name={room.name}
-        type="room"
-        apiUrl="/api/socket/messages"
-        query={{
-          roomId: room.id,
-          communityId: room.communityId,
-        }}
-      />
-      {/* </>
-      )} */}
+          />
+          <MessageInput
+            name={room.name}
+            type="room"
+            apiUrl="/api/socket/messages"
+            query={{
+              roomId: room.id,
+              communityId: room.communityId,
+            }}
+          />
+        </>
+      )}
       {/* {room.type === RoomType.AUDIO && (
         <MediaRoom chatId={room.id} video={false} audio={true} />
       )}
