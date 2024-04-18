@@ -7,6 +7,10 @@ import { RoomType, MemberRole } from '@prisma/client'
 import { Hash, Mic, ShieldAlert, ShieldCheck, Video } from 'lucide-react'
 import { redirect } from 'next/navigation'
 import { CommunityHeader } from './CommunityHeader'
+import { SearchCommunity } from './CommunitySearch'
+import { CommunitySection } from './CommunitySection'
+import { CommunityRoom } from './CommunityRoom'
+import { CommunityMember } from './CommunityMember'
 
 interface CommunitySidebarProps {
   communityId: string
@@ -47,9 +51,9 @@ export const CommunitySidebar = async ({
   return (
     <div className="flex h-full w-full flex-col bg-[#F2F3F5] text-primary dark:bg-[#2B2D31]">
       <CommunityHeader community={community} role={role} />
-      {/* <ScrollArea className="flex-1 px-3">
+      <ScrollArea className="flex-1 px-3">
         <div className="mt-2">
-          <CommunitySearch
+          <SearchCommunity
             data={[
               {
                 label: 'Text Rooms',
@@ -94,14 +98,14 @@ export const CommunitySidebar = async ({
         {!!textRooms?.length && (
           <div className="mb-2">
             <CommunitySection
-              sectionType="channels"
-              channelType={RoomType.TEXT}
+              sectionType="rooms"
+              roomType={RoomType.TEXT}
               role={role}
               label="Text Rooms"
             />
             <div className="space-y-[2px]">
               {textRooms.map((room) => (
-                <CommunityChannel
+                <CommunityRoom
                   key={room.id}
                   room={room}
                   community={community}
@@ -114,14 +118,14 @@ export const CommunitySidebar = async ({
         {!!audioRooms?.length && (
           <div className="mb-2">
             <CommunitySection
-              sectionType="channels"
-              channelType={RoomType.TEXT}
+              sectionType="rooms"
+              roomType={RoomType.TEXT}
               role={role}
               label="Audio Rooms"
             />
             <div className="space-y-[2px]">
               {audioRooms.map((room) => (
-                <CommunityChannel
+                <CommunityRoom
                   key={room.id}
                   room={room}
                   community={community}
@@ -134,14 +138,14 @@ export const CommunitySidebar = async ({
         {!!videoRooms?.length && (
           <div className="mb-2">
             <CommunitySection
-              sectionType="channels"
-              channelType={RoomType.TEXT}
+              sectionType="rooms"
+              roomType={RoomType.TEXT}
               role={role}
               label="Video Rooms"
             />
             <div className="space-y-[2px]">
               {videoRooms.map((room) => (
-                <CommunityChannel
+                <CommunityRoom
                   key={room.id}
                   room={room}
                   community={community}
@@ -170,7 +174,7 @@ export const CommunitySidebar = async ({
             </div>
           </div>
         )}
-      </ScrollArea> */}
+      </ScrollArea>
     </div>
   )
 }

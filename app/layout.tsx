@@ -5,6 +5,8 @@ import { ClerkProvider } from '@clerk/nextjs'
 import { ThemeProvider } from '@/app/providers/ThemeProvider'
 import { cn } from '@/shared/lib/utils'
 import { ModalProvider } from '@/app/providers/ModalProvider'
+import { SocketProvider } from '@/app/providers/SocketProvider'
+import { QueryProvider } from '@/app/providers/QueryProvider'
 
 const font = Open_Sans({ subsets: ['latin'] })
 
@@ -28,8 +30,10 @@ export default function RootLayout({
             enableSystem
             storageKey="virtual-meetings-theme"
           >
-            <ModalProvider />
-            {children}
+            <SocketProvider>
+              <ModalProvider />
+              <QueryProvider>{children}</QueryProvider>
+            </SocketProvider>
           </ThemeProvider>
         </body>
       </html>

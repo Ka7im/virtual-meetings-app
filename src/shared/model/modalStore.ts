@@ -5,7 +5,7 @@ export type ModalType =
   | 'createCommunity'
   | 'invite'
   | 'editCommunity'
-  | 'users'
+  | 'members'
   | 'createRoom'
   | 'leaveCommunity'
   | 'deleteCommunity'
