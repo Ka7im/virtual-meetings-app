@@ -5,10 +5,13 @@ interface PageProps {
     memberId: string
     communityId: string
   }
+  searchParams: {
+    video?: boolean
+  }
 }
 
-const Page = ({ params }: PageProps) => {
-  return <MemberIdPage params={params} />
+const Page = ({ params, searchParams }: PageProps) => {
+  return <MemberIdPage params={params} searchParams={searchParams} />
 }
 
 export default Page

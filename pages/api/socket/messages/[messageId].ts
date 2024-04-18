@@ -13,8 +13,6 @@ export default async function handler(
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
-  console.log('req', req)
-
   try {
     const profile = await pagesCurrentProfile(req)
     const { messageId, communityId, roomId } = req.query
@@ -138,7 +136,7 @@ export default async function handler(
       })
     }
 
-    const updateKey = `chat:${roomId}:message:update`
+    const updateKey = `chat:${roomId}:messages:update`
 
     res?.socket?.server?.io?.emit(updateKey, message)
 

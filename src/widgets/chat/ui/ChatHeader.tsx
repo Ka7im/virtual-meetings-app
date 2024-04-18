@@ -4,6 +4,7 @@ import { UserButton } from '@clerk/nextjs'
 import { Hash, Loader2 } from 'lucide-react'
 import { BurgerMenu } from './BurgerMenu'
 import { SocketIndicator } from '@/shared/ui/SocketIndicator'
+import { ChatVideoButton } from '@/features/chat'
 
 interface ChatHeaderProps {
   communityId: string
@@ -50,28 +51,12 @@ export const ChatHeader = ({
             <p className="text-md mx-2 font-semibold text-black dark:text-white">
               {name}
             </p>
-
-            {/* {!isConnected && (
-              <div className="ml-auto flex flex-row gap-[2px]">
-                <Loader2 className="ml-auto h-4 w-4 animate-spin text-zinc-500" />
-                <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
-                  connecting
-                </p>
-              </div>
-            )} */}
           </>
         )}
       </div>
-      {/* <UserButton
-        afterSignOutUrl="/"
-        appearance={{
-          elements: {
-            avatarBox: 'h-[36px] w-[36px]',
-          },
-        }}
-      /> */}
 
       <div className="ml-auto flex items-center">
+        {type === 'conversation' && <ChatVideoButton />}
         <SocketIndicator />
       </div>
     </div>

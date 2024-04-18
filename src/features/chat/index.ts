@@ -1,0 +1,1 @@
+export { VideoButton as ChatVideoButton } from './ui/VideoButton'

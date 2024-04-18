@@ -4,6 +4,7 @@ import { getRoom } from '@/entities/room'
 import { MessageInput } from '@/features/message/input'
 import { ChatHeader } from '@/widgets/chat'
 import { ChatMessages } from '@/widgets/chat/ui/ChatMessages'
+import { MediaRoom } from '@/widgets/mediaRoom'
 import { redirectToSignIn } from '@clerk/nextjs'
 import { RoomType } from '@prisma/client'
 import { redirect } from 'next/navigation'
@@ -63,12 +64,12 @@ export const RoomId = async ({ params }: RoomIdProps) => {
           />
         </>
       )}
-      {/* {room.type === RoomType.AUDIO && (
+      {room.type === RoomType.AUDIO && (
         <MediaRoom chatId={room.id} video={false} audio={true} />
       )}
       {room.type === RoomType.VIDEO && (
         <MediaRoom chatId={room.id} video={true} audio={true} />
-      )} */}
+      )}
     </div>
   )
 }
