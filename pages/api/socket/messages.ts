@@ -12,6 +12,7 @@ export default async function handler(
   }
   try {
     console.log('SOCKET HEADERS', req.headers)
+    console.log('Upgrade header', req.headers.upgrade)
 
     const profile = await pagesCurrentProfile(req)
     const { communityId, roomId } = req.query
