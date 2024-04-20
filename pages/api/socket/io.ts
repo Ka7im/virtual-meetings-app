@@ -20,6 +20,12 @@ const ioHandler = (req: NextApiRequest, res: NextApiResponseServerIO) => {
       addTrailingSlash: false,
     })
 
+    io.engine.on("connection_error", (err) => {
+      console.log('SOCKET.IO', err.code);     // 3
+      console.log('SOCKET.IO', err.message);  // "Bad request"
+      console.log('SOCKET.IO', err.context);  // { name: 'TRANSPORT_MISMATCH', transport: 'websocket', previousTransport: 'polling' }
+    });
+
     res.socket.server.io = io
   }
 
