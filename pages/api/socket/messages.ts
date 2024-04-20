@@ -11,6 +11,8 @@ export default async function handler(
     return res.status(405).json({ error: 'Method now allowed' })
   }
   try {
+    console.log('SOCKET HEADERS', req.headers)
+
     const profile = await pagesCurrentProfile(req)
     const { communityId, roomId } = req.query
     const { content, fileUrl } = req.body
