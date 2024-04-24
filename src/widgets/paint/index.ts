@@ -1,0 +1,1 @@
+export { PaintWidget as Paint } from './ui/PaintWidget'

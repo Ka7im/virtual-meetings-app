@@ -11,7 +11,7 @@ export default async function handler(
     return res.status(405).json({ error: 'Method now allowed' })
   }
   try {
-    console.log('SOCKET HEADERS', req.headers)
+    console.log('SOCKET HEADERS', req.headers.connection)
     console.log('Upgrade header', req.headers.upgrade)
 
     const profile = await pagesCurrentProfile(req)

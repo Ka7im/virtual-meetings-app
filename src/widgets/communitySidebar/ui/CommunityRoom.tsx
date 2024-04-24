@@ -4,7 +4,7 @@ import { cn } from '@/shared/lib/utils'
 import { ModalType, useModal } from '@/shared/model/modalStore'
 import { ActionTooltip } from '@/shared/ui/ActionTooltip'
 import { Room, RoomType, MemberRole, Community } from '@prisma/client'
-import { Edit, Hash, Lock, Mic, Trash, Video } from 'lucide-react'
+import { Brush, Edit, Hash, Lock, Mic, Trash, Video } from 'lucide-react'
 import { useParams, useRouter } from 'next/navigation'
 
 interface props {
@@ -17,6 +17,7 @@ const iconMap = {
   [RoomType.TEXT]: Hash,
   [RoomType.AUDIO]: Mic,
   [RoomType.VIDEO]: Video,
+  [RoomType.PAINT]: Brush,
 }
 
 export const CommunityRoom = ({ room, community, role }: props) => {

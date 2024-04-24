@@ -1,4 +1,6 @@
+
 import { NextApiResponseServerIO } from '@/shared/types/io'
+
 import { Server as NetServer } from 'net'
 import { NextApiRequest } from 'next'
 import { Server as ServerIO } from 'socket.io'
@@ -20,11 +22,27 @@ const ioHandler = (req: NextApiRequest, res: NextApiResponseServerIO) => {
       addTrailingSlash: false,
     })
 
-    io.engine.on("connection_error", (err) => {
-      console.log('SOCKET.IO', err.code);     // 3
-      console.log('SOCKET.IO', err.message);  // "Bad request"
-      console.log('SOCKET.IO', err.context);  // { name: 'TRANSPORT_MISMATCH', transport: 'websocket', previousTransport: 'polling' }
-    });
+
+    io.on('connection', async (socket) => {
+      socket.on('initialize-paint-room', async (msg) => {
+
+        const payload = msg
+        console.log(payload, 'payload')
+
+
+        socket.join(`roomId:${payload.roomId}`)
+        console.log('socket rooms', socket.rooms)
+
+
+        socket.to(`roomId:${payload.roomId}`).emit('connection-paint-room', `CONNECTED ${payload.username}`)
+      })
+
+      socket.on('draw', (msg) => {
+        console.log('msg input-paint', msg)
+
+        socket.to(`roomId:${msg.roomId}`).emit('draw', msg)
+      })
+    })
 
     res.socket.server.io = io
   }

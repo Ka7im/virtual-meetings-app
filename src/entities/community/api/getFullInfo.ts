@@ -41,6 +41,9 @@ export const getFullInfo = async ({
   const videoRooms = community?.rooms.filter(
     (room) => room.type === RoomType.VIDEO,
   )
+  const paintRooms = community?.rooms.filter(
+    (room) => room.type === RoomType.PAINT,
+  )
   const members = community?.members.filter(
     (member) => member.profileId !== profileId,
   )
@@ -49,5 +52,5 @@ export const getFullInfo = async ({
     (member) => member.profileId === profileId,
   )?.role
 
-  return { community, textRooms, audioRooms, videoRooms, members, role }
+  return { community, textRooms, audioRooms, videoRooms, paintRooms, members, role }
 }

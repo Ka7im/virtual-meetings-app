@@ -5,6 +5,7 @@ import { MessageInput } from '@/features/message/input'
 import { ChatHeader } from '@/widgets/chat'
 import { ChatMessages } from '@/widgets/chat/ui/ChatMessages'
 import { MediaRoom } from '@/widgets/mediaRoom'
+import { Paint } from '@/widgets/paint'
 import { redirectToSignIn } from '@clerk/nextjs'
 import { RoomType } from '@prisma/client'
 import { redirect } from 'next/navigation'
@@ -69,6 +70,9 @@ export const RoomId = async ({ params }: RoomIdProps) => {
       )}
       {room.type === RoomType.VIDEO && (
         <MediaRoom chatId={room.id} video={true} audio={true} />
+      )}
+      {room.type === RoomType.PAINT && (
+        <Paint roomId={room.id} username={profile.name} />
       )}
     </div>
   )

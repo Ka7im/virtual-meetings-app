@@ -23,11 +23,11 @@ export default async function handler(
     }
 
     if (!communityId) {
-      return res.status(400).json({ error: 'Server ID Missing' })
+      return res.status(400).json({ error: 'Community ID Missing' })
     }
 
     if (!roomId) {
-      return res.status(400).json({ error: 'Channel ID Missing' })
+      return res.status(400).json({ error: 'Room ID Missing' })
     }
 
     const community = await db.community.findFirst({
@@ -45,7 +45,7 @@ export default async function handler(
     })
 
     if (!community) {
-      return res.status(404).json({ error: 'Server not found' })
+      return res.status(404).json({ error: 'Community not found' })
     }
 
     const room = await db.room.findFirst({
@@ -56,7 +56,7 @@ export default async function handler(
     })
 
     if (!room) {
-      return res.status(404).json({ error: 'Channel not found' })
+      return res.status(404).json({ error: 'Room not found' })
     }
 
     const member = community.members.find(

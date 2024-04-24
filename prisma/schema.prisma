@@ -74,6 +74,7 @@ enum RoomType {
   TEXT
   AUDIO
   VIDEO
+  PAINT
 }
 
 model Room {

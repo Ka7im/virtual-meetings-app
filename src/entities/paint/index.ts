@@ -1,0 +1,1 @@
+export { usePaintSocket } from './lib/hooks/usePaintSocket'

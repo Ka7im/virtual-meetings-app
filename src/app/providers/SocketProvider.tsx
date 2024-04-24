@@ -2,14 +2,14 @@
 
 import { socketContext } from '@/shared/api/socket'
 import { ReactNode, useEffect, useState } from 'react'
-import { io as ClientIO } from 'socket.io-client'
+import { io as ClientIO, Socket } from 'socket.io-client'
 
 export const SocketProvider = ({ children }: { children: ReactNode }) => {
-  const [socket, setSocket] = useState(null)
+  const [socket, setSocket] = useState<Socket | null>(null)
   const [isConnected, setIsConnected] = useState(false)
 
   useEffect(() => {
-    const socket = new (ClientIO as any)(process.env.NEXT_PUBLIC_SITE_URL!, {
+    const socket = ClientIO(process.env.NEXT_PUBLIC_SITE_URL || '', {
       path: '/api/socket/io',
       addTrailingSlash: false,
     })

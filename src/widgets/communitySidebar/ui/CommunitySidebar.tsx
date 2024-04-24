@@ -4,7 +4,7 @@ import { currentProfile } from '@/entities/profile'
 import { ScrollArea } from '@/shared/ui/scroll-area'
 import { Separator } from '@/shared/ui/separator'
 import { RoomType, MemberRole } from '@prisma/client'
-import { Hash, Mic, ShieldAlert, ShieldCheck, Video } from 'lucide-react'
+import { Brush, Hash, Mic, ShieldAlert, ShieldCheck, Video } from 'lucide-react'
 import { redirect } from 'next/navigation'
 import { CommunityHeader } from './CommunityHeader'
 import { SearchCommunity } from './CommunitySearch'
@@ -28,6 +28,7 @@ const iconMap = {
   [RoomType.TEXT]: <Hash className="mr-2 h-4 w-4" />,
   [RoomType.AUDIO]: <Mic className="mr-2 h-4 w-4" />,
   [RoomType.VIDEO]: <Video className="mr-2 h-4 w-4" />,
+  [RoomType.PAINT]: <Brush className="mr-2 h-4 w-4" />,
 }
 
 export const CommunitySidebar = async ({
@@ -38,11 +39,18 @@ export const CommunitySidebar = async ({
   if (!profile) {
     return redirect('/')
   }
-  const { community, members, videoRooms, textRooms, audioRooms, role } =
-    await getCommunityFullInfo({
-      communityId: communityId,
-      profileId: profile.id,
-    })
+  const {
+    community,
+    members,
+    videoRooms,
+    textRooms,
+    audioRooms,
+    paintRooms,
+    role,
+  } = await getCommunityFullInfo({
+    communityId: communityId,
+    profileId: profile.id,
+  })
 
   if (!community) {
     redirect('/')
@@ -77,6 +85,15 @@ export const CommunitySidebar = async ({
                 label: 'Video Rooms',
                 type: 'room',
                 data: videoRooms?.map((room) => ({
+                  id: room.id,
+                  name: room.name,
+                  icon: iconMap[room.type],
+                })),
+              },
+              {
+                label: 'Paint Rooms',
+                type: 'room',
+                data: paintRooms?.map((room) => ({
                   id: room.id,
                   name: room.name,
                   icon: iconMap[room.type],
@@ -145,6 +162,26 @@ export const CommunitySidebar = async ({
             />
             <div className="space-y-[2px]">
               {videoRooms.map((room) => (
+                <CommunityRoom
+                  key={room.id}
+                  room={room}
+                  community={community}
+                  role={role}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+        {!!paintRooms?.length && (
+          <div className="mb-2">
+            <CommunitySection
+              sectionType="rooms"
+              roomType={RoomType.TEXT}
+              role={role}
+              label="Paint Rooms"
+            />
+            <div className="space-y-[2px]">
+              {paintRooms.map((room) => (
                 <CommunityRoom
                   key={room.id}
                   room={room}

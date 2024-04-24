@@ -17,7 +17,7 @@ export async function GET(req: Request) {
     }
 
     if (!roomId) {
-      return new NextResponse('Channel ID Missing', { status: 400 })
+      return new NextResponse('Room ID Missing', { status: 400 })
     }
 
     let messages: Message[] = []
