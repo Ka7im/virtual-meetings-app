@@ -69,8 +69,8 @@ export const Toolbar = ({ roomId }: ToolBarProps) => {
         </button>
         <button
           onClick={() => {
-            if (canvas) {
-              setTool(new Circle(canvas))
+            if (canvas && socket) {
+              setTool(new Circle(canvas, socket, roomId))
             }
           }}
         >
@@ -78,8 +78,8 @@ export const Toolbar = ({ roomId }: ToolBarProps) => {
         </button>
         <button
           onClick={() => {
-            if (canvas) {
-              setTool(new Eraser(canvas))
+            if (canvas && socket) {
+              setTool(new Eraser(canvas, socket, roomId))
             }
           }}
         >
@@ -87,8 +87,8 @@ export const Toolbar = ({ roomId }: ToolBarProps) => {
         </button>
         <button
           onClick={() => {
-            if (canvas) {
-              setTool(new Line(canvas))
+            if (canvas && socket) {
+              setTool(new Line(canvas, socket, roomId))
             }
           }}
         >

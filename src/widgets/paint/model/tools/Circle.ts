@@ -8,8 +8,8 @@ export class Circle extends Tool {
   private startY?: number
   private saved?: string
 
-  constructor(canvas: HTMLCanvasElement) {
-    super(canvas);
+  constructor(canvas: HTMLCanvasElement, socket: WebSocket, roomId: string) {
+    super(canvas, socket, roomId);
     this.listen()
   }
 

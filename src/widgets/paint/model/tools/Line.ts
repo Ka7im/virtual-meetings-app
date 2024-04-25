@@ -10,8 +10,8 @@ export default class Line extends Tool {
   private currentY?: number
   private saved?: string
 
-  constructor(canvas: HTMLCanvasElement) {
-    super(canvas);
+  constructor(canvas: HTMLCanvasElement, socket: WebSocket, roomId: string) {
+    super(canvas, socket, roomId);
     this.listen()
     this.name = 'Line'
   }
