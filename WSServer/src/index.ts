@@ -67,7 +67,7 @@ const connectionHandler = (ws: WebSocket, msg: WSMessage) => {
 }
 
 const broadcastConnection = (ws: WebSocket, msg: WSMessage) => {
-  aWss.clients.forEach(client => {
+  aWss.clients.forEach((client: WebSocket) => {
     const sending = (client: WebSocket) => {
       if (client.id === msg.id) {
         client.send(JSON.stringify(msg))
