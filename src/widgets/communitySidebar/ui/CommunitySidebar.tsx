@@ -26,8 +26,7 @@ const roleIconMap = {
 
 const iconMap = {
   [RoomType.TEXT]: <Hash className="mr-2 h-4 w-4" />,
-  [RoomType.AUDIO]: <Mic className="mr-2 h-4 w-4" />,
-  [RoomType.VIDEO]: <Video className="mr-2 h-4 w-4" />,
+  [RoomType.MEDIA]: <Mic className="mr-2 h-4 w-4" />,
   [RoomType.PAINT]: <Brush className="mr-2 h-4 w-4" />,
 }
 
@@ -39,32 +38,25 @@ export const CommunitySidebar = async ({
   if (!profile) {
     return redirect('/')
   }
-  const {
-    community,
-    members,
-    videoRooms,
-    textRooms,
-    audioRooms,
-    paintRooms,
-    role,
-  } = await getCommunityFullInfo({
-    communityId: communityId,
-    profileId: profile.id,
-  })
+  const { community, members, textRooms, mediaRooms, paintRooms, role } =
+    await getCommunityFullInfo({
+      communityId: communityId,
+      profileId: profile.id,
+    })
 
   if (!community) {
     redirect('/')
   }
 
   return (
-    <div className="flex h-full w-full flex-col bg-[#F2F3F5] text-primary dark:bg-[#2B2D31]">
+    <div className="flex h-full w-full flex-col bg-[#F2F3F5] text-primary dark:bg-[#001629] border dark:border-[#002e48]">
       <CommunityHeader community={community} role={role} />
       <ScrollArea className="flex-1 px-3">
         <div className="mt-2">
           <SearchCommunity
             data={[
               {
-                label: 'Text Rooms',
+                label: 'Текстовые комнаты',
                 type: 'room',
                 data: textRooms?.map((room) => ({
                   id: room.id,
@@ -73,25 +65,16 @@ export const CommunitySidebar = async ({
                 })),
               },
               {
-                label: 'Audio Rooms',
+                label: 'Медиа комнаты',
                 type: 'room',
-                data: audioRooms?.map((room) => ({
+                data: mediaRooms?.map((room) => ({
                   id: room.id,
                   name: room.name,
                   icon: iconMap[room.type],
                 })),
               },
               {
-                label: 'Video Rooms',
-                type: 'room',
-                data: videoRooms?.map((room) => ({
-                  id: room.id,
-                  name: room.name,
-                  icon: iconMap[room.type],
-                })),
-              },
-              {
-                label: 'Paint Rooms',
+                label: 'Виртуальные доски',
                 type: 'room',
                 data: paintRooms?.map((room) => ({
                   id: room.id,
@@ -100,7 +83,7 @@ export const CommunitySidebar = async ({
                 })),
               },
               {
-                label: 'Members',
+                label: 'Участники',
                 type: 'member',
                 data: members?.map((member) => ({
                   id: member.id,
@@ -111,14 +94,14 @@ export const CommunitySidebar = async ({
             ]}
           />
         </div>
-        <Separator className="my-2 rounded-md bg-zinc-200 dark:bg-zinc-700" />
+        <Separator className="my-2 rounded-md bg-zinc-200 dark:bg-[#002e48]" />
         {!!textRooms?.length && (
           <div className="mb-2">
             <CommunitySection
               sectionType="rooms"
               roomType={RoomType.TEXT}
               role={role}
-              label="Text Rooms"
+              label="Текстовые комнаты"
             />
             <div className="space-y-[2px]">
               {textRooms.map((room) => (
@@ -132,36 +115,16 @@ export const CommunitySidebar = async ({
             </div>
           </div>
         )}
-        {!!audioRooms?.length && (
+        {!!mediaRooms?.length && (
           <div className="mb-2">
             <CommunitySection
               sectionType="rooms"
-              roomType={RoomType.TEXT}
+              roomType={RoomType.MEDIA}
               role={role}
-              label="Audio Rooms"
+              label="Медиа комнаты"
             />
             <div className="space-y-[2px]">
-              {audioRooms.map((room) => (
-                <CommunityRoom
-                  key={room.id}
-                  room={room}
-                  community={community}
-                  role={role}
-                />
-              ))}
-            </div>
-          </div>
-        )}
-        {!!videoRooms?.length && (
-          <div className="mb-2">
-            <CommunitySection
-              sectionType="rooms"
-              roomType={RoomType.TEXT}
-              role={role}
-              label="Video Rooms"
-            />
-            <div className="space-y-[2px]">
-              {videoRooms.map((room) => (
+              {mediaRooms.map((room) => (
                 <CommunityRoom
                   key={room.id}
                   room={room}
@@ -178,7 +141,7 @@ export const CommunitySidebar = async ({
               sectionType="rooms"
               roomType={RoomType.TEXT}
               role={role}
-              label="Paint Rooms"
+              label="Виртуальные доски"
             />
             <div className="space-y-[2px]">
               {paintRooms.map((room) => (
@@ -197,7 +160,7 @@ export const CommunitySidebar = async ({
             <CommunitySection
               sectionType="members"
               role={role}
-              label="Members"
+              label="Участники"
               community={community}
             />
             <div className="space-y-[2px]">

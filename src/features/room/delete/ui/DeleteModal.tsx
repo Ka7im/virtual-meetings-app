@@ -51,15 +51,15 @@ export const DeleteModal = ({}) => {
       <DialogContent className="overflow-hidden bg-white p-0 text-black">
         <DialogHeader className="px-6 pt-8">
           <DialogTitle className="text-center text-2xl font-bold">
-            Delete Room
+            Удалить комнату
           </DialogTitle>
           <DialogDescription className="text-center text-zinc-500 ">
-            Do you really want to do this? The {room?.type.toLowerCase()}
-            -room{' '}
+            Вы действительно хотите сделать это? {room?.type.toLowerCase()}-
+            комната{' '}
             <span className="font-semibold text-indigo-500  ">
               #{room?.name}
             </span>{' '}
-            will be permamently deleted.
+            будет удалена
           </DialogDescription>
         </DialogHeader>
         <DialogFooter className="bg-gray-100 px-6 py-4">
@@ -70,14 +70,14 @@ export const DeleteModal = ({}) => {
               variant="ghost"
               className="outline-none"
             >
-              Cancel
+              Отмена
             </Button>
             <Button
               disabled={loading}
               onClick={onConfirm}
               variant="destructive"
             >
-              Confirm
+              Подтвердить
             </Button>
           </div>
         </DialogFooter>

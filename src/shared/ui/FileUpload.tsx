@@ -71,6 +71,19 @@ export const FileUpload = ({ endpoint, onChange, value }: FileUploadProps) => {
 
   return (
     <UploadDropzone
+      content={{
+        label: <div>Выберите файл</div>,
+        allowedContent({ ready, fileTypes, isUploading }) {
+          if (!ready) return 'Проверка'
+          if (isUploading) return 'Файл загружается'
+          return `Файл который вы можете загрузить: ${fileTypes.join(', ')}`
+        },
+        button({ ready, isUploading, uploadProgress }) {
+          if (ready) return <div>Загрузить</div>
+          if (isUploading) return <div>{uploadProgress}%</div>
+          return 'Подготовка...'
+        },
+      }}
       endpoint={endpoint}
       onClientUploadComplete={(response) => onChange(response?.[0].url)}
       onUploadError={(error: Error) => {

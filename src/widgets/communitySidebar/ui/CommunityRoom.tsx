@@ -7,7 +7,7 @@ import { Room, RoomType, MemberRole, Community } from '@prisma/client'
 import { Brush, Edit, Hash, Lock, Mic, Trash, Video } from 'lucide-react'
 import { useParams, useRouter } from 'next/navigation'
 
-interface props {
+interface CommunityRoomProps {
   room: Room
   community: Community
   role?: MemberRole
@@ -20,7 +20,11 @@ const iconMap = {
   [RoomType.PAINT]: Brush,
 }
 
-export const CommunityRoom = ({ room, community, role }: props) => {
+export const CommunityRoom = ({
+  room,
+  community,
+  role,
+}: CommunityRoomProps) => {
   const { onOpen } = useModal()
   const params = useParams()
   const router = useRouter()
@@ -39,8 +43,8 @@ export const CommunityRoom = ({ room, community, role }: props) => {
     <button
       onClick={() => onClick()}
       className={cn(
-        'group relative mb-1 flex w-full items-center gap-x-2 rounded-md px-2 py-2 transition hover:bg-zinc-700/10 dark:hover:bg-zinc-700/50',
-        params?.roomId === room.id && 'bg-zinc-700/20 dark:bg-zinc-700',
+        'group relative mb-1 flex w-full items-center gap-x-2 rounded-md px-2 py-2 transition hover:bg-zinc-700/10 dark:hover:bg-[#002e48]',
+        params?.roomId === room.id && 'bg-zinc-700/20 dark:bg-[#002e48]',
       )}
     >
       <Icon className="h-5 w-5 flex-shrink-0 text-zinc-500 dark:text-zinc-400" />

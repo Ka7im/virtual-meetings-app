@@ -88,11 +88,11 @@ export const CreateCommunityModal = ({
       <DialogContent className="bg-white text-black p-0 overflow-hidden">
         <DialogHeader className="pt-8 px-6">
           <DialogTitle className="text-2xl text-center font-bold">
-            Customize your community
+            Настройте свое сообщество
           </DialogTitle>
           <DialogDescription className="text-center text-zinc-500">
-            Give your community a personality with a name and an image. You can
-            always change it later.
+            Придайте своему сообществу индивидуальность с помощью названия и
+            изображения. Вы всегда можете изменить его позже
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
@@ -121,13 +121,13 @@ export const CreateCommunityModal = ({
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70">
-                      Community name
+                      Название сообщества
                     </FormLabel>
                     <FormControl>
                       <Input
                         disabled={isLoading}
                         className="border-0 bg-zinc-300/50 text-black focus-visible:ring-0 focus-visible:ring-offset-0"
-                        placeholder="Enter community name"
+                        placeholder="Введите название сообщества"
                         {...field}
                       />
                     </FormControl>
@@ -138,7 +138,7 @@ export const CreateCommunityModal = ({
             </div>
             <DialogFooter className="bg-gray-100 px-6 py-4">
               <Button disabled={isLoading} variant="primary">
-                Create
+                Создать
               </Button>
             </DialogFooter>
           </form>

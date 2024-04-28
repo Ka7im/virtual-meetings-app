@@ -31,10 +31,10 @@ const CommunitiesIdLayout = async ({
 
   return (
     <div className="h-full">
-      <div className="fixed inset-y-0 z-20 hidden h-full w-60 flex-col md:flex">
+      <div className="fixed inset-y-0 z-20 hidden h-full w-60 flex-col md:flex right-0">
         <CommunitySidebar communityId={params.communityId} />
       </div>
-      <main className="h-full md:pl-60">{children}</main>
+      <main className="h-full md:pr-60">{children}</main>
     </div>
   )
 }

@@ -20,7 +20,7 @@ export const ChatHeader = ({
   imageUrl,
 }: ChatHeaderProps) => {
   return (
-    <div className="text-md flex h-12 flex-row items-center justify-between border-b-2 border-neutral-200 px-3 font-semibold dark:border-neutral-800">
+    <div className="text-md flex h-12 flex-row items-center justify-between border-b-2 border-neutral-200 px-3 font-semibold dark:border-[#002e48]">
       <div className="flex w-full flex-row items-center">
         <BurgerMenu communityId={communityId} />
         {type === 'room' && (
@@ -29,14 +29,6 @@ export const ChatHeader = ({
             <p className="text-md font-semibold text-black dark:text-white ">
               {name}
             </p>
-            {/* {!isConnected && (
-              <div className="ml-auto flex flex-row gap-[2px]">
-                <Loader2 className="ml-auto h-4 w-4 animate-spin text-zinc-500" />
-                <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
-                  connecting
-                </p>
-              </div>
-            )} */}
           </>
         )}
         {type === 'conversation' && (
@@ -57,7 +49,7 @@ export const ChatHeader = ({
 
       <div className="ml-auto flex items-center">
         {type === 'conversation' && <ChatVideoButton />}
-        <SocketIndicator />
+        {/* <SocketIndicator /> */}
       </div>
     </div>
   )

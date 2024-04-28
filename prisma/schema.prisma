@@ -72,8 +72,7 @@ model Member {
 
 enum RoomType {
   TEXT
-  AUDIO
-  VIDEO
+  MEDIA
   PAINT
 }
 

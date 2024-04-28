@@ -50,10 +50,10 @@ export const LeaveModal = () => {
       <DialogContent className="overflow-hidden bg-white p-0 text-black">
         <DialogHeader className="px-6 pt-8">
           <DialogTitle className="text-center text-2xl font-bold">
-            Leave Community
+            Покинуть сообщество
           </DialogTitle>
           <DialogDescription className="text-center text-zinc-500">
-            Do you really want to leave{' '}
+            Вы действительно хотите уйти{' '}
             <span className="font-semibold text-indigo-500">
               {community?.name}
             </span>
@@ -68,14 +68,14 @@ export const LeaveModal = () => {
               variant="ghost"
               className="outline-none"
             >
-              Cancel
+              Отмена
             </Button>
             <Button
               disabled={loading}
               onClick={onConfirm}
               variant="destructive"
             >
-              Confirm
+              Подтвердить
             </Button>
           </div>
         </DialogFooter>

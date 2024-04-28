@@ -95,10 +95,10 @@ export const ManageModal = () => {
       <DialogContent className="overflow-hidden bg-white text-black">
         <DialogHeader className="px-6 pt-8">
           <DialogTitle className="text-center text-2xl font-bold">
-            Manage Members
+            Управление участниками
           </DialogTitle>
           <DialogDescription className="text-center text-zinc-500">
-            Your community has {community?.members?.length} members
+            Количество участников: {community?.members?.length}
           </DialogDescription>
         </DialogHeader>
         <ScrollArea className="mt-8 max-h-[420px] pr-6">
@@ -125,7 +125,7 @@ export const ManageModal = () => {
                         <DropdownMenuSub>
                           <DropdownMenuSubTrigger className="flex items-center">
                             <ShieldQuestion className="mr-2 h-4 w-4" />
-                            <span>Role</span>
+                            <span>Роль</span>
                           </DropdownMenuSubTrigger>
                           <DropdownMenuPortal>
                             <DropdownMenuSubContent>
@@ -133,7 +133,7 @@ export const ManageModal = () => {
                                 onClick={() => onChangeRole(member.id, 'GUEST')}
                               >
                                 <Shield className="mr-2 h-4 w-4" />
-                                Guest
+                                Гость
                                 {member.role === 'GUEST' && (
                                   <Check className="ml-auto h-4 w-4" />
                                 )}
@@ -144,7 +144,7 @@ export const ManageModal = () => {
                                 }
                               >
                                 <ShieldCheck className="mr-2 h-4 w-4" />
-                                Moderator
+                                Модератор
                                 {member.role === 'MODERATOR' && (
                                   <Check className="ml-auto h-4 w-4" />
                                 )}
@@ -157,7 +157,7 @@ export const ManageModal = () => {
                           onClick={() => onMemberKick(member.id)}
                         >
                           <Gavel className="mr-2 h-4 w-4" />
-                          Kick
+                          Исключить
                         </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>

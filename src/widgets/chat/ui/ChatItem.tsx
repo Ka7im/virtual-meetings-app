@@ -179,7 +179,7 @@ export const ChatItem = ({
                 rel="noopener noreferrer"
                 className="ml-2 text-sm text-indigo-500 hover:underline dark:text-indigo-400"
               >
-                PDF File
+                PDF Файл
               </a>
             </div>
           )}
@@ -194,7 +194,7 @@ export const ChatItem = ({
               {content}
               {isUpdated && !deleted && (
                 <span className="mx-2 text-[10px] text-zinc-500 dark:text-zinc-400">
-                  (edited)
+                  (отредактировано)
                 </span>
               )}
             </p>

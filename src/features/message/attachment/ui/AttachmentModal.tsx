@@ -73,10 +73,10 @@ export const AttachmentModal = ({}) => {
       <DialogContent className="overflow-hidden bg-white p-0 text-black">
         <DialogHeader className="px-6 pt-8">
           <DialogTitle className="text-center text-2xl font-bold">
-            Add a attachment
+            Добавить вложение
           </DialogTitle>
           <DialogDescription className="text-center text-zinc-500">
-            Send a file as a message
+            Отправить файл как сообщение
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
@@ -102,7 +102,7 @@ export const AttachmentModal = ({}) => {
             </div>
             <DialogFooter className="bg-gray-100 px-6 py-4">
               <Button disabled={isLoading} variant="primary">
-                Send
+                Отправить
               </Button>
             </DialogFooter>
           </form>

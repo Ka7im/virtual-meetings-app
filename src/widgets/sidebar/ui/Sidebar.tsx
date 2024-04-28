@@ -28,7 +28,7 @@ export const Sidebar = async () => {
   })
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-between space-y-4 bg-[#E3E5E8] py-3 text-primary dark:bg-[#1E1F22]">
+    <div className="flex h-full w-full flex-col items-center justify-between space-y-4 bg-[#E3E5E8] py-3 text-primary dark:bg-[#001629] border dark:border-[#002e48]">
       <div className="flex flex-col gap-3">
         <ScrollArea className="w-full flex-1">
           {communities.map((community) => {
@@ -43,7 +43,7 @@ export const Sidebar = async () => {
             )
           })}
         </ScrollArea>
-        <Separator className="mx-auto h-[2px] w-10 rounded-md bg-zinc-300 dark:bg-zinc-700" />
+        <Separator className="mx-auto h-[2px] w-10 rounded-md bg-zinc-300 dark:bg-[#002e48]" />
         <CreateCommunityButton />
       </div>
 

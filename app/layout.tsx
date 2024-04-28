@@ -7,6 +7,7 @@ import { cn } from '@/shared/lib/utils'
 import { ModalProvider } from '@/app/providers/ModalProvider'
 import { SocketProvider } from '@/app/providers/SocketProvider'
 import { QueryProvider } from '@/app/providers/QueryProvider'
+import { ruRU } from '@clerk/localizations'
 
 const font = Open_Sans({ subsets: ['latin'] })
 
@@ -21,9 +22,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <ClerkProvider>
-      <html lang="en" suppressHydrationWarning>
-        <body className={cn(font.className, 'bg-white dark:bg-[#313338]')}>
+    <ClerkProvider localization={ruRU}>
+      <html lang="ru" suppressHydrationWarning>
+        <body className={cn(font.className, 'bg-white dark:bg-[#001629]')}>
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"

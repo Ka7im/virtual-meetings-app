@@ -3,6 +3,7 @@
 import { useChatQuery, useChatSocket } from '@/entities/chat'
 import { Member, Message, Profile } from '@prisma/client'
 import { format } from 'date-fns'
+import { ru } from 'date-fns/locale'
 import { Hash, Loader2, ServerCrash } from 'lucide-react'
 import { ElementRef, Fragment, useRef } from 'react'
 import { useChatScroll } from '../lib/hooks/useChatScroll'
@@ -69,7 +70,7 @@ export const ChatMessages = ({
       <div className="flex flex-1 flex-col items-center justify-center">
         <Loader2 className="my-4 h-7 w-7 animate-spin text-zinc-500" />
         <p className="text-xs text-zinc-500 dark:text-zinc-400">
-          Loading messages...
+          Загрузка сообщений...
         </p>
       </div>
     )
@@ -80,7 +81,7 @@ export const ChatMessages = ({
       <div className="flex flex-1 flex-col items-center justify-center">
         <ServerCrash className="my-4 h-7 w-7  text-zinc-500" />
         <p className="text-xs text-zinc-500 dark:text-zinc-400">
-          Something went wrong...
+          Что-то пошло не так...
         </p>
       </div>
     )
@@ -96,13 +97,13 @@ export const ChatMessages = ({
             </div>
           )}
           <p className="text-xl font-bold md:text-3xl">
-            {type === 'room' ? 'Welcome to #' : ''}
+            {type === 'room' ? 'Добро пожаловать в #' : ''}
             {name}
           </p>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
             {type === 'room'
-              ? `This is the start of #${name} room.`
-              : `This is the start of your conversation with ${name}.`}
+              ? `Это начало комнаты #${name}`
+              : `Это начало диалога с ${name}.`}
           </p>
         </div>
       )}
@@ -115,7 +116,7 @@ export const ChatMessages = ({
               onClick={() => fetchNextPage()}
               className="my-4 text-xs text-zinc-500 transition hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-300"
             >
-              Load previous messages
+              Загрузка предыдущих сообщений
             </button>
           )}
         </div>
@@ -129,7 +130,9 @@ export const ChatMessages = ({
                 id={message.id}
                 content={message.content}
                 member={message.member}
-                timestamp={format(new Date(message.createdAt), DATE_FORMAT)}
+                timestamp={format(new Date(message.createdAt), DATE_FORMAT, {
+                  locale: ru,
+                })}
                 fileUrl={message.fileUrl}
                 deleted={message.deleted}
                 currentMember={member}

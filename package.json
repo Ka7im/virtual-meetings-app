@@ -13,6 +13,7 @@
     "test:e2e": "playwright test"
   },
   "dependencies": {
+    "@clerk/localizations": "^2.2.0",
     "@clerk/nextjs": "^4.29.12",
     "@emoji-mart/data": "^1.1.2",
     "@emoji-mart/react": "^1.1.1",

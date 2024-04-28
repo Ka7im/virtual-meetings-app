@@ -94,10 +94,10 @@ export const EditModal = () => {
       <DialogContent className="overflow-hidden bg-white p-0 text-black">
         <DialogHeader className="px-6 pt-8">
           <DialogTitle className="text-center text-2xl font-bold">
-            Edit a room
+            Редактировать комнату
           </DialogTitle>
           <DialogDescription className="text-center text-zinc-500">
-            Change room name or room type
+            Измените название или тип комнаты
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
@@ -109,13 +109,13 @@ export const EditModal = () => {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-xs font-bold uppercase text-zinc-500 dark:text-secondary/70">
-                      Room name
+                      Название комнаты
                     </FormLabel>
                     <FormControl>
                       <Input
                         disabled={isLoading}
                         className="border-0 bg-zinc-300/50 text-black focus-visible:ring-0 focus-visible:ring-offset-0"
-                        placeholder="Enter community name"
+                        placeholder="Введите название комнаты"
                         {...field}
                       />
                     </FormControl>
@@ -129,7 +129,7 @@ export const EditModal = () => {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-xs font-bold uppercase text-zinc-500 dark:text-secondary/70">
-                      Room type
+                      Тип комнаты
                     </FormLabel>
                     <Select
                       disabled={isLoading}
@@ -142,15 +142,28 @@ export const EditModal = () => {
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        {Object.values(RoomType).map((type) => (
-                          <SelectItem
-                            key={type}
-                            value={type}
-                            className="capitalize"
-                          >
-                            {type.toLowerCase()}
-                          </SelectItem>
-                        ))}
+                        {Object.values(RoomType).map((type) => {
+                          let itemText = 'Текст'
+
+                          switch (type) {
+                            case 'MEDIA':
+                              itemText = 'Медиа'
+                              break
+                            case 'PAINT':
+                              itemText = 'Виртуальная доска'
+                              break
+                          }
+
+                          return (
+                            <SelectItem
+                              key={type}
+                              value={type}
+                              className="capitalize"
+                            >
+                              {itemText}
+                            </SelectItem>
+                          )
+                        })}
                       </SelectContent>
                     </Select>
                     <FormMessage />
@@ -160,7 +173,7 @@ export const EditModal = () => {
             </div>
             <DialogFooter className="bg-gray-100 px-6 py-4">
               <Button disabled={isLoading} variant="primary">
-                Create
+                Сохранить
               </Button>
             </DialogFooter>
           </form>

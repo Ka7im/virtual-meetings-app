@@ -1,6 +1,5 @@
 import { db } from '@/shared/api/db'
 import { RoomType } from '@prisma/client'
-import { redirect } from 'next/navigation'
 
 interface getFullInfoProps {
   communityId: string
@@ -35,12 +34,10 @@ export const getFullInfo = async ({
   const textRooms = community?.rooms.filter(
     (room) => room.type === RoomType.TEXT,
   )
-  const audioRooms = community?.rooms.filter(
-    (room) => room.type === RoomType.AUDIO,
+  const mediaRooms = community?.rooms.filter(
+    (room) => room.type === RoomType.MEDIA,
   )
-  const videoRooms = community?.rooms.filter(
-    (room) => room.type === RoomType.VIDEO,
-  )
+
   const paintRooms = community?.rooms.filter(
     (room) => room.type === RoomType.PAINT,
   )
@@ -52,5 +49,5 @@ export const getFullInfo = async ({
     (member) => member.profileId === profileId,
   )?.role
 
-  return { community, textRooms, audioRooms, videoRooms, paintRooms, members, role }
+  return { community, textRooms, mediaRooms, paintRooms, members, role }
 }

@@ -10,14 +10,14 @@ export const CreateCommunityButton = () => {
 
   return (
     <div>
-      <ActionTooltip side="right" align="center" label="Add a community">
+      <ActionTooltip side="right" align="center" label="Добавить сообщество">
         <button
           className="group flex items-center outline-none"
           onClick={() => onOpen('createCommunity')}
         >
-          <div className="m-3 flex h-[48px] w-[48px] items-center justify-center overflow-hidden rounded-[24px] bg-background transition-all group-hover:rounded-[16px] group-hover:bg-blue-500 dark:bg-neutral-700">
+          <div className="m-3 flex h-[48px] w-[48px] items-center justify-center overflow-hidden rounded-[24px] bg-background transition-all group-hover:rounded-[16px] group-hover:bg-neutral-700 dark:bg-[#002e48]">
             <Plus
-              className="text-blue-500 transition group-hover:text-white"
+              className="text-[#001629] transition group-hover:text-white"
               size={25}
             />
           </div>

@@ -61,15 +61,15 @@ export const InviteModal = () => {
       <DialogContent className="overflow-hidden bg-white p-0 text-black">
         <DialogHeader className="px-6 pt-8">
           <DialogTitle className="text-center text-2xl font-bold">
-            Invite friends
+            Пригласить друзей
           </DialogTitle>
           <DialogDescription className="text-center text-zinc-500">
-            Invite your friends to your community!
+            Приглашайте друзей в свое сообщество!
           </DialogDescription>
         </DialogHeader>
         <div className="p-6 ">
           <Label className="text-xs font-bold uppercase text-zinc-500 dark:text-secondary/70">
-            community invite link
+            ссылка для приглашения в сообщество
           </Label>
           <div className="mt-2 flex items-center gap-x-2">
             <Input
@@ -93,7 +93,7 @@ export const InviteModal = () => {
             size="sm"
             className="mt-4 text-xs text-zinc-500"
           >
-            Generate a new link
+            Создайте новую ссылку
             <RefreshCw className="ml-2 h-4 w-4" />
           </Button>
         </div>

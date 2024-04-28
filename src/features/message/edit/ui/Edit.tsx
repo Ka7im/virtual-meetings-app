@@ -28,7 +28,7 @@ export const Edit = ({ form, onSubmit, isLoading }: EditProps) => {
                     <Input
                       disabled={isLoading}
                       className="border-0 border-none bg-zinc-200/90 p-2 text-zinc-600 focus-visible:ring-0 focus-visible:ring-offset-0 dark:bg-zinc-700/75 dark:text-zinc-200"
-                      placeholder="Edited message"
+                      placeholder="Отредактированное сообщение"
                       {...field}
                     />
                   </div>
@@ -37,12 +37,12 @@ export const Edit = ({ form, onSubmit, isLoading }: EditProps) => {
             )}
           />
           <Button size="sm" variant="primary" disabled={isLoading}>
-            Save
+            Сохранить
           </Button>
         </div>
 
         <span className="mt-1 text-[10px] text-zinc-400">
-          Press ESC to cancel, ENTER to save
+          Нажмите ESC чтобы отменить, ENTER чтобы сохранить
         </span>
       </form>
     </Form>
