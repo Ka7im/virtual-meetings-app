@@ -15,8 +15,7 @@ interface CommunityRoomProps {
 
 const iconMap = {
   [RoomType.TEXT]: Hash,
-  [RoomType.AUDIO]: Mic,
-  [RoomType.VIDEO]: Video,
+  [RoomType.MEDIA]: Mic,
   [RoomType.PAINT]: Brush,
 }
 
