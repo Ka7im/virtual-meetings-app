@@ -21,11 +21,11 @@ export const CommunityId = async ({ params }: CommunityIdProps) => {
     profileId: profile.id,
   })
 
-  const generalChannel = community?.rooms[0]
+  const generalRoom = community?.rooms[0]
 
-  if (generalChannel?.name !== 'general') {
+  if (generalRoom?.name !== 'Главная') {
     return null
   }
 
-  return redirect(`/communities/${community?.id}/rooms/${generalChannel?.id}`)
+  return redirect(`/communities/${community?.id}/rooms/${generalRoom?.id}`)
 }

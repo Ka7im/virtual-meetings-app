@@ -56,7 +56,7 @@ export const CommunityRoom = ({
       >
         {room.name}
       </p>
-      {room.name !== 'general' && role !== MemberRole.GUEST && (
+      {room.name !== 'Главная' && role !== MemberRole.GUEST && (
         <div className="ml-auto flex items-center gap-x-2 ">
           <ActionTooltip label="Edit">
             <Edit
@@ -72,7 +72,7 @@ export const CommunityRoom = ({
           </ActionTooltip>
         </div>
       )}
-      {room.name === 'general' && (
+      {room.name === 'Главная' && (
         <Lock className="ml-auto hidden h-4 w-4 text-zinc-500 group-hover:block dark:text-zinc-400" />
       )}
     </button>

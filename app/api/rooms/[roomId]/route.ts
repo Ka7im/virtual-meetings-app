@@ -42,7 +42,7 @@ export async function DELETE(
           delete: {
             id: params.roomId,
             name: {
-              not: 'general',
+              not: 'Главная',
             },
           },
         },
@@ -78,8 +78,8 @@ export async function PATCH(
       return new NextResponse('Community ID Missing', { status: 400 })
     }
 
-    if (name === 'general') {
-      return new NextResponse("Cannot edit a room with name 'general'", {
+    if (name === 'Главная') {
+      return new NextResponse("Cannot edit a room with name 'Главная'", {
         status: 400,
       })
     }
@@ -102,7 +102,7 @@ export async function PATCH(
             where: {
               id: params.roomId,
               NOT: {
-                name: 'general',
+                name: 'Главная',
               },
             },
             data: {

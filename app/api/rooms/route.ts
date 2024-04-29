@@ -19,8 +19,8 @@ export async function POST(req: Request) {
       return new NextResponse('Community ID missing', { status: 400 })
     }
 
-    if (name === 'general') {
-      return new NextResponse('Name cannot be "general"', { status: 400 })
+    if (name === 'Главная') {
+      return new NextResponse('Name cannot be "Главная"', { status: 400 })
     }
 
     const community = await db.community.update({

@@ -22,7 +22,7 @@ export async function POST(req: Request) {
         rooms: {
           create: [
             {
-              name: 'general',
+              name: 'Главная',
               profileId: profile.id,
             },
           ],

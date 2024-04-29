@@ -19,7 +19,7 @@ export const getCommunityWithGeneralRoom = async ({
     include: {
       rooms: {
         where: {
-          name: 'general',
+          name: 'Главная',
         },
         orderBy: {
           createdAt: 'asc',

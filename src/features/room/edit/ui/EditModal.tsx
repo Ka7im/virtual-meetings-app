@@ -41,8 +41,8 @@ const formSchema = z.object({
       message: 'Name is required.',
     })
     .max(12)
-    .refine((name) => name !== 'general', {
-      message: 'Room name cannot be "general"!',
+    .refine((name) => name !== 'Главная', {
+      message: 'Room name cannot be "Главная"!',
     }),
   type: z.nativeEnum(RoomType),
 })
